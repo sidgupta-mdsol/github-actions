@@ -8,5 +8,5 @@ jobs:
         run: echo "Hello World"
       - name: step2
         run: |
-          python square.py
+          python /home/runner/work/github-actions/square.py
   
