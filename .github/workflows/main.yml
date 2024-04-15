@@ -7,5 +7,6 @@ jobs:
       - name: step1
         run: echo "Hello World"
       - name: step2
-        run: echo "Hello World"
+        run: |
+          python square.py
   
