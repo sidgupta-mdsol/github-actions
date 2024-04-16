@@ -19,4 +19,10 @@ jobs:
       - name: step2
         run: |
           python square.py
+  goodbye:
+    runs-on: ubuntu-latest
+    steps:
+      - name: foodbeye world
+        run: echo "Goodbye World"
+        shell: bash
   
