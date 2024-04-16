@@ -1,11 +1,19 @@
 name: Hello-World_workflow
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+      
 jobs:
-  build:
+  hello:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: step1
         run: echo "Hello World"
       - name: step2
