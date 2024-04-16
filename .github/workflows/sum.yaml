@@ -1,0 +1,30 @@
+name: two number sum
+
+on:
+  workflow_dispatch:
+    inputs:
+      A:
+        description: 1stinteger
+        required: true
+        type: number
+      B:
+        description: 2ndiinteger
+        required: true
+        type: number
+jobs:
+  calculatesum:
+    runs-on: ubuntu-latest
+    steps:
+      - name: sum
+        run: |
+          a=${{ github.event.inputs.A }}
+          b=${{ github.event.inputs.B }}
+          summation=$(( a + b ))
+          echo $summation
+  
+
+      
+      
+          
+          
+      
