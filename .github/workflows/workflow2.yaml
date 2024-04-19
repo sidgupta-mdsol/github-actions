@@ -12,11 +12,11 @@ on:
         type: number
 jobs:
   call_sum_workflow:
-    #runs on: ubuntu-latest
-    #steps:
-    name: uses sum workflow
-    uses: ./.github/workflows/sum.yaml
-    with: |
-        a=${{ github.event.inputs.A }}
-        b=${{ github.event.inputs.B }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: uses sum workflow
+        uses: ./.github/workflows/sum.yaml
+        with: |
+          a=${{ github.event.inputs.A }}
+          b=${{ github.event.inputs.B }}
       
