@@ -1,6 +1,7 @@
 name: two number sum
 run-name: ${{ github.actor }} is learning GitHub Actions
 on:
+  workflow_call:
   workflow_dispatch:
     inputs:
       A:
