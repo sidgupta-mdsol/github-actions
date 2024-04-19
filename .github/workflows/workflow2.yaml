@@ -19,6 +19,6 @@ jobs:
       - name: uses sum workflow
         uses: ./.github/workflows/sum.yaml
         with: |
-          a=${{ github.event.inputs.A }}
-          b=${{ github.event.inputs.B }}
+          A: ${{ github.event.inputs.A }}
+          B: ${{ github.event.inputs.B }}
       
