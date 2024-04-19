@@ -16,7 +16,7 @@ jobs:
     #steps:
     name: uses sum workflow
     uses: ./.github/workflows/sum.yaml
-    with:
+    with: |
         a=${{ inputs.A }}
         b=${{ inputs.B }}
       
