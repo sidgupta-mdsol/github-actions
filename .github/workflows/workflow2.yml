@@ -12,16 +12,16 @@ on:
         type: number
 jobs:
   call_sum_workflow:
-    # runs-on: ubuntu-latest
-    # steps:
-    #   - name: print pwd
-    #     run: |
-    #       echo pwd
-    #   - name: Checkout Repo
-    #     uses: actions/checkout@v4
-    #   - name: uses sum workflow
-      uses: sidgupta-mdsol/github-actions/.github/workflows/sum.yml@main
-      with: |
-        A: ${{ inputs.A }}
-        B: ${{ inputs.B }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: print pwd
+        run: |
+          echo pwd
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      - name: uses sum workflow
+        uses: sidgupta-mdsol/github-actions/.github/workflows/sum.yml@main
+        with: |
+          A: ${{ inputs.A }}
+          B: ${{ inputs.B }}
       
