@@ -1,0 +1,22 @@
+name: workflow2
+on:
+  workflow_dispatch:
+    inputs:
+      A:
+        description: 1stinteger
+        required: true
+        type: number
+      B:
+        description: 2ndiinteger
+        required: true
+        type: number
+jobs:
+  call_sum_workflow:
+    #runs on: ubuntu-latest
+    #steps:
+    name: uses sum workflow
+    uses: ./.github/workflows/sum.yaml
+    with:
+        a=${{ inputs.A }}
+        b=${{ inputs.B }}
+      
