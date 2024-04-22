@@ -16,5 +16,5 @@ jobs:
     steps:
       - name: Sum
         run: |
-          summation= $A + $B
+          summation= $(( $A + $B ))
           echo $summation
