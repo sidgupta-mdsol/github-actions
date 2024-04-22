@@ -1,15 +1,14 @@
 name: workflow2
 on:
   workflow_dispatch:
-    inputs:
-      A1:
-        description: 1stinteger
-        required: true
-        type: number
-      B1:
-        description: 2ndiinteger
-        required: true
-        type: number
+    A1:
+      description: 1stinteger
+      required: true
+      type: number
+    B1:
+      description: 2ndiinteger
+      required: true
+      type: number
 jobs:
   call_sum_workflow:
     uses: sidgupta-mdsol/github-actions/.github/workflows/sum.yml@main
