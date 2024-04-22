@@ -20,7 +20,7 @@ jobs:
       # - name: Checkout Repo
       #   uses: actions/checkout@v2
       - name: uses sum workflow
-        uses: ./.github/workflows/sum.yml@main
+        uses: github-actions/.github/workflows/sum.yml@main
         with: |
           A: ${{ inputs.A1 }}
           B: ${{ inputs.B1 }}
