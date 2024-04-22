@@ -16,11 +16,11 @@ on:
   #     A:
   #       description: 1stinteger
   #       required: true
-  #       type: number
+  #       type: string
   #     B:
   #       description: 2ndiinteger
   #       required: true
-  #       type: number
+  #       type: string
 jobs:
   calculatesum:
     runs-on: ubuntu-latest
