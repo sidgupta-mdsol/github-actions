@@ -1,40 +1,22 @@
 name: two number sum
-run-name: ${{ github.actor }} is learning GitHub Actions
 on:
   workflow_call:
     inputs:
       A:
-        description: 1stinteger
+        description: 1st integer
         required: true
         type: number
       B:
-        description: 2ndiinteger
+        description: 2nd integer
         required: true
         type: number
-  # workflow_dispatch:
-  #   inputs:
-  #     A:
-  #       description: 1stinteger
-  #       required: true
-  #       type: string
-  #     B:
-  #       description: 2ndiinteger
-  #       required: true
-  #       type: string
 jobs:
   calculatesum:
     runs-on: ubuntu-latest
     steps:
-      - name: sum
+      - name: Sum
         run: |
           a=${{ github.event.inputs.A }}
           b=${{ github.event.inputs.B }}
           summation=$(( a + b ))
           echo $summation
-  
-
-      
-      
-          
-          
-      
