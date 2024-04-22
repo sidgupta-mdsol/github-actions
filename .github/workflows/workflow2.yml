@@ -14,7 +14,7 @@ on:
         type: number
 jobs:
   call_sum_workflow:
-    runs-on: ubuntu-latest
+    
     uses: sidgupta-mdsol/github-actions/.github/workflows/sum.yml@main
     with:
       A:  github.event.inputs.A1
