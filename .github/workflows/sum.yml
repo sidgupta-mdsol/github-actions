@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Sum
         run: |
-          a=${{ github.event.inputs.A }}
-          b=${{ github.event.inputs.B }}
+          a= inputs.A 
+          b= inputs.B
           summation=$(( a + b ))
           echo $summation
