@@ -1,19 +1,21 @@
 name: workflow2
 on:
   workflow_dispatch:
-     inputs:
+    inputs:
       A1:
-        description: 1stinteger
+        description: 1st integer
         required: true
         type: number
       B1:
-        description: 2ndiinteger
+        description: 2nd integer
         required: true
         type: number
 jobs:
   call_sum_workflow:
-    uses: sidgupta-mdsol/github-actions/.github/workflows/sum.yml@main
-    with: |
-      A: ${{ github.events.inputs.A1 }}
-      B: ${{ github.events.inputs.B1 }}
-  
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Sum Workflow
+        uses: sidgupta-mdsol/github-actions/.github/workflows/sum.yml@main
+        with:
+          A: ${{ github.event.inputs.A1 }}
+          B: ${{ github.event.inputs.B1 }}
