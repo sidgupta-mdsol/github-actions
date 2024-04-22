@@ -6,6 +6,8 @@ on:
         description: 1st integer
         required: true
         type: number
+        
+        
       B1:
         description: 2nd integer
         required: true
@@ -17,5 +19,5 @@ jobs:
       - name: Call Sum Workflow
         uses: sidgupta-mdsol/github-actions/.github/workflows/sum.yml@main
         with:
-          A: ${{ github.event.inputs.A1 }}
-          B: ${{ github.event.inputs.B1 }}
+          A:  github.event.inputs.A1
+          B:  github.event.inputs.B1
