@@ -16,7 +16,6 @@ jobs:
     steps:
       - name: Sum
         run: |
-          a= inputs.A 
-          b= inputs.B
-          summation=$(( a + b ))
+         
+          summation= A + B
           echo $summation
