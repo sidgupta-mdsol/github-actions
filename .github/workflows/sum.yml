@@ -16,6 +16,5 @@ jobs:
     steps:
       - name: Sum
         run: |
-         
-          summation= ${{ inputs.A }} + ${{ inputs.B }}
+          summation= ${{ A + B }}
           echo $summation
