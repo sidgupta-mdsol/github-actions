@@ -1,6 +1,4 @@
 name: using outputs and needs
-#description: will be using the outputs and needs
-
 on: 
   workflow_dispatch:
     inputs:
@@ -20,8 +18,8 @@ jobs:
       - name: step1
         id: step1
         run: |
-          x1: ${{ inputs.a1 }}
-          string1: ${{ inputs.a2 }}
+          x1= ${{ inputs.a1 }}
+          string1= ${{ inputs.a2 }}
           echo "::set-output name=x1::$x1"
           echo "::set-output name=string1::$string1"
       - name: step2
