@@ -33,9 +33,10 @@ jobs:
         #   echo "step 2 outputs ${{ steps.step1.outputs.string1}}"
         run: |
           echo "::set-output name=test2::world"
+      
       - name: step3
         run: |
-          x1= ${{ inputs.a1 }}
+          x1= ${{ github.event.inputs.a1 }}
           echo "::set-output name=test3::$x1"
   job2:
     runs-on: ubuntu-latest
