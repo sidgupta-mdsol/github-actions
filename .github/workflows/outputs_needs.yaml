@@ -1,0 +1,30 @@
+name: using outputs and needs
+#description: will be using the outputs and needs
+
+on: 
+  workflow_dispatch:
+    inputs:
+      a1: 
+        description: provide 1st integer
+        required: true
+        type: number
+      a2:
+        description: provide 2nd string
+        required: true
+        type: string
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step1
+        id: step1
+        run: |
+          x1: ${{ inputs.a1 }}
+          string1: ${{ inputs.a2 }}
+          echo "::set-output name=x1::$x1"
+          echo "::set-output name=string1::$string1"
+      - name: step2
+        run: |
+          echo "step 2 outputs ${{ steps.step1.outputs.x1}}"
+          echo "step 2 outputs ${{ steps.step1.outputs.string1}}"
