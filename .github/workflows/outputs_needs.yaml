@@ -21,22 +21,16 @@ jobs:
     steps:
       - name: step1
         id: step1
-        # run: |
-        #   x1= ${{ inputs.a1 }}
-        #   string1= ${{ inputs.a2 }}
         run: |
           echo "::set-output name=test::hello"
           
       - name: step2
-        # run: |
-        #   echo "step 2 outputs ${{ steps.step1.outputs.x1}}"
-        #   echo "step 2 outputs ${{ steps.step1.outputs.string1}}"
         run: |
           echo "::set-output name=test2::world"
       
       - name: step3
         run: |
-          x1= ${{ github.event.inputs.a1 }}
+          x1=${{ fromJSON(github.event.inputs.a1) }}
           echo "::set-output name=test3::$x1"
   job2:
     runs-on: ubuntu-latest
