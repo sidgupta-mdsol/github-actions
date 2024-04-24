@@ -1,0 +1,12 @@
+name: check app status
+on:
+  workflow_dispatch:
+
+jobs:
+  test_status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check app status
+        run: |
+          echo ${{ env.MESSAGE }}
+          echo ${{ secrets.ACC_KEY }}
