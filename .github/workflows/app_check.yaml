@@ -8,5 +8,5 @@ jobs:
     steps:
       - name: check app status
         run: |
-          echo ${{ env.MESSAGE1 }}
+          echo ${{ vars.MESSAGE1 }}
           echo ${{ secrets.ACC_KEY1 }}
