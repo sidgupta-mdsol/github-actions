@@ -1,0 +1,17 @@
+name: create and upload artifacts
+on:
+  workflow_dispatch:
+jobs:
+  artifact_job:
+    name: Save Output
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          expr 1 + 1 > output.log
+      - name: upload output file
+        uses: actions/upload-artifact@v4
+        with: 
+          name: output-log-file
+          path: output.log
+    
