@@ -22,16 +22,16 @@ jobs:
       - name: step1
         id: step1
         run: |
-          echo "test=hello" << $GITHUB_OUTPUT
+          echo "test=hello" << '$GITHUB_OUTPUT'
           
       - name: step2
         run: |
-          echo "test2=world" << $GITHUB_OUTPUT
+          echo "test2=world" << '$GITHUB_OUTPUT'
       
       - name: step3
         run: |
           x1=${{ fromJSON(github.event.inputs.a1) }}
-          echo "test3=$x1" << $GITHUB_OUTPUT
+          echo "test3=$x1" << '$GITHUB_OUTPUT'
   job2:
     runs-on: ubuntu-latest
     needs: job1
