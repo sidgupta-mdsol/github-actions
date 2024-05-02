@@ -41,6 +41,6 @@ jobs:
           OUTPUT2: ${{needs.job1.outputs.output2}}
           OUTPUT3: ${{needs.job1.outputs.output3}}
       - run: |
-          echo $OUTPUT1
-          echo $OUTPUT2
-          echo $OUTPUT3
+          echo "$OUTPUT1"
+          echo "$OUTPUT2"
+          echo "$OUTPUT3"
