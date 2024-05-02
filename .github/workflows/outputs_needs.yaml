@@ -70,7 +70,8 @@ jobs:
     # This job depends on job1, so it will run after job1 is completed.
     needs: job1
     steps: 
-      - run: |
+      - name: print outputs defined in job1
+        run: |
           # The following code will not print "test1", "test2", and "test3" because to share data, you need to use outputs.
           # Using "needs" doesn't mean that you can access all the things present in job1, it simply means
           # job2 will run only when job1 is completed. 
