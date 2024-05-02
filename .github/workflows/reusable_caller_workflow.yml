@@ -15,7 +15,7 @@ on:
 jobs:
   call_sum_workflow:
     
-    uses: sidgupta-mdsol/github-actions/.github/workflows/sum.yml@main
+    uses: sidgupta-mdsol/github-actions/.github/workflows/reusable_called_sum_workflow.yml@main
     with:
       A: ${{ fromJSON(github.event.inputs.A1) }}
       B: ${{ fromJSON(github.event.inputs.B1) }}
