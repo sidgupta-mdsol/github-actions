@@ -8,6 +8,8 @@ on:
         description: provide 1st integer
         required: true
         type: number
+        #if input type is number in workflow_dispatch then y have to use fromJSON x1=${{ fromJSON(github.event.inputs.a1) }}
+        #when u acccess it
       a2:
         description: provide 2nd string
         required: true
