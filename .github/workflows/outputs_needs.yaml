@@ -1,56 +1,79 @@
-#important note: id is important when using outputs,
-#in this workflow we will see how to define and use outputs in same job and different jobs.
+# IMPORTANT NOTE: `id` is important when using outputs.
+# In this workflow, we will see how to define and use outputs within the same job and different jobs.
+
 name: using outputs and needs
 on: 
+  # This workflow is triggered manually by clicking on the "Run workflow" button.
   workflow_dispatch:
     inputs:
+      # Description for the input parameter "a1"
       a1: 
-        description: provide 1st integer
+        description: Provide the 1st integer
         required: true
         type: number
-        #if input type is number in workflow_dispatch then y have to use fromJSON() for e.g. x1=${{ fromJSON(github.event.inputs.a1) }}
-        #when u acccess it
+        # If the input type is "number" in "workflow_dispatch", then you have to use fromJSON() to access it.
+        # For example, x1=${{ fromJSON(github.event.inputs.a1) }}
+        # when accessing it.
+      # Description for the input parameter "a2"
       a2:
-        description: provide 2nd string
+        description: Provide the 2nd string
         required: true
         type: string
 
 jobs:
+  # This is job1.
   job1:
+    # This job runs on an Ubuntu latest environment.
     runs-on: ubuntu-latest
+    # Define outputs for this job.
     outputs: 
+      # Define output1 using the output from step1.
       output1: ${{ steps.step1.outputs.test1 }}
+      # Define output2 using the output from step2.
       output2: ${{ steps.step2.outputs.test2 }}
+      # Define output3 using the output from step3.
       output3: ${{ steps.step3.outputs.test3 }}
     steps:
+      # Step 1: Set the output "test1" to "hello".
       - name: step1
         id: step1
         run: |
           echo "test1=hello" >> "$GITHUB_OUTPUT"
           
+      # Step 2: Set the output "test2" to "world".
       - name: step2
         id:  step2
         run: |
           echo "test2=world" >> "$GITHUB_OUTPUT"
       
+      # Step 3: Set the output "test3" to the value of input "a1".
       - name: step3
         id: step3
         run: |
           x1=${{ fromJSON(github.event.inputs.a1) }}
           echo "test3=$x1" >> "$GITHUB_OUTPUT"
+      
+      # Step 4: Echo the outputs.
       - name: echo outputs
         run: |
-          echo ${{steps.step1.outputs.test1}}
-          echo ${{steps.step2.outputs.test2}}
-          echo ${{steps.step3.outputs.test3}}
+          # Echo the output "test1".
+          echo "Output from step1: ${{ steps.step1.outputs.test1 }}"
+          # Echo the output "test2".
+          echo "Output from step2: ${{ steps.step2.outputs.test2 }}"
+          # Echo the output "test3".
+          echo "Output from step3: ${{ steps.step3.outputs.test3 }}"
+
+  # This is job2.
   job2:
+    # This job runs on an Ubuntu latest environment.
     runs-on: ubuntu-latest
+    # This job depends on job1, so it will run after job1 is completed.
     needs: job1
     steps: 
       - run: |
-          #the below code line will not print test1 because if you want to share data u need to use outputs
-          # by using "needs" doesnot mean that u can acces all the things that are present in job1, it simply means
-          #job2 will be run only when job1 is completed 
+          # The following code will not print "test1", "test2", and "test3" because to share data, you need to use outputs.
+          # Using "needs" doesn't mean that you can access all the things present in job1, it simply means
+          # job2 will run only when job1 is completed. 
           echo "${{ needs.job1.outputs.test1 }} ${{ needs.job1.outputs.test2 }} ${{ needs.job1.outputs.test3 }}"
           echo "${{ needs.job1.outputs.output1 }}"
           echo "${{ needs.job1.outputs.output2 }}"
