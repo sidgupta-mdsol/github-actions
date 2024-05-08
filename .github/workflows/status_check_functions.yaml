@@ -27,7 +27,7 @@ jobs:
         run: exit 1
         
       - name: step 6
-        if: ${{ failure() && steps.step5.conclusion == "failure" }}
+        if: ${{ failure() && steps.step5.conclusion == 'failure' }}
         run: echo "step 6 is running be ause of step5"
         
       
