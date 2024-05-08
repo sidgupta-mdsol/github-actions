@@ -39,6 +39,7 @@ jobs:
     steps:
       - name: step1
         if: ${{ always() }}
+        run: echo "jai hind"
         
       
         
