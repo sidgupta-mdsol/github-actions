@@ -1,3 +1,37 @@
 # to learn about status check functions and know about making dependencies between steps and jobs
 # will be using if conditions and needs context
 
+name: check status of jobs and steps
+on:
+  workflow_dispatch:
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step1
+        run: echo "Step1"
+        
+      - name: step2
+# success Returns true when all previous steps have succeeded.
+        if: ${{ success() }}
+        run: echo "step1 is success thats why step2 is running"
+        
+      - name: step3
+      #Returns true when any previous step of a job fails. If you have a chain of dependent jobs,
+      #failure() returns true if any ancestor job fails.
+        if: ${{ faliure() }}
+        run: echo "faliure() not worked"
+        
+      - name: step5 will fail
+        id: step5
+        run: exit 1
+        
+      - name: step 6
+        if: ${{ faliure() && steps.step5.conclusion == "faliure" }}
+        run: echo "step 6 is running be ause of step5"
+        
+      
+        
+        
+        
+      
