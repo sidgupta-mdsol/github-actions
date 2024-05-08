@@ -9,7 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: step1
-        run: echo "Step1"
+        run: |
+          echo "Step1"
+          echo ${{ job.status }}
         
       - name: step2
 # success Returns true when all previous steps have succeeded.
