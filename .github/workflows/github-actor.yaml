@@ -16,5 +16,5 @@ jobs:
           ls
       - name: running python script
         run: |
-          python3 sqaure.py
+          python3 square.py
       
