@@ -7,6 +7,8 @@ jobs:
     env: 
       Actor: ${{ github.actor}}
     steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
       - name: echoing actor
         run: |
           echo $Actor
