@@ -14,5 +14,7 @@ jobs:
           echo $Actor
           pwd
           ls
+      - name: running python script
+        run: |
           python sqaure.py
       
