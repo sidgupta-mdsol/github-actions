@@ -12,5 +12,7 @@ jobs:
       - name: echoing actor
         run: |
           echo $Actor
+          pwd
+          ls
           python sqaure.py
       
