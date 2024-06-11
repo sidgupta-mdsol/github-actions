@@ -1,0 +1,14 @@
+name: using github actors
+on: 
+  push:
+jobs:
+  github-actor:
+    runs-on: ubuntu-latest
+    env: 
+      Actor: ${{ github.actor}}
+    steps:
+      - name: echoing actor
+        run: |
+          echo $Actor
+          python sqaure.py
+      
