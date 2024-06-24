@@ -1,6 +1,7 @@
 name: using github actors
 on: 
   push:
+  workflow_dispatch:
 jobs:
   github-actor:
     runs-on: ubuntu-latest
