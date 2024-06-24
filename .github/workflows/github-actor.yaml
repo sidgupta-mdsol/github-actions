@@ -18,4 +18,9 @@ jobs:
       - name: running python script
         run: |
           python3 square.py
-      
+      - name: searching images
+        run: |
+          pwd
+          ls 
+          cd docs/
+          ls
