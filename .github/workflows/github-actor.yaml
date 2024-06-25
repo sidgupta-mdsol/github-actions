@@ -9,7 +9,7 @@ jobs:
       Actor: ${{ github.actor}}
       MEDISTRANO_PROJECT_NAME: "Siteinvoices"
       MEDISTRANO_STAGE_NAME: "Distro"
-      MEDISTRANO_TOKEN: "eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InNpZGd1cHRhQG1kc29sLmNvbSIsInVzZXJfaWQiOjQyMTIsImV4cCI6MTcyMTU1MTYyNiwidmVyc2lvbiI6MX0.VFTBR9FORL3EPXiu-BhEVqdzmlNp_wHA35Agja-5aRw"
+      MEDISTRANO_TOKEN: ${{ secrets.MEDISTRANO_TOKEN }}
       EKS_SWITCH: "off"
     steps:
       - name: Checkout Repo
