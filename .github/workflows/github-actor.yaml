@@ -24,3 +24,6 @@ jobs:
           ls 
           cd docs/
           ls
+      - name: checking installations
+        run: |
+          python3 installation.py
