@@ -31,3 +31,6 @@ jobs:
       - name: checking installations
         run: |
           python3 installation.py
+      - name: running ir.py
+        run: |
+          python3 IR.py
