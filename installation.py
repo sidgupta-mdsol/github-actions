@@ -11,18 +11,17 @@ def is_package_installed(package_name):
 
 # Function to install a Python package using pip        
 def install_package(package_name):
-    result = subprocess.run(["pip3", "install", package_name], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    result = subprocess.run(["pip3", "install", package_name])
     return result.returncode == 0
 
 # Function to check if wkhtmltopdf is installed
 def is_wkhtmltopdf_installed():
-    result = subprocess.run(["which", "wkhtmltopdf"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    result = subprocess.run(["which", "wkhtmltopdf"])
     return result.returncode == 0
 
 # Function to install wkhtmltopdf
 def install_wkhtmltopdf():
-    result_update = subprocess.run(['sudo', 'apt-get', 'update'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    result_install = subprocess.run(['sudo', 'apt-get', 'install', '-y', 'wkhtmltopdf'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    result_install = subprocess.run(['sudo', 'apt-get', 'install', '-y', 'wkhtmltopdf'])
     return result_install.returncode == 0
 
 # Required Python packages
@@ -62,4 +61,3 @@ else:
 print("\nInstallation summary:")
 for package, status in install_status.items():
     print(f"- {package}: {status}")
-
