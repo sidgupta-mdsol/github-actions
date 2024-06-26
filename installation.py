@@ -1,49 +1,39 @@
 import subprocess
-import sys
 import importlib
 
 # Function to check if a Python package is installed
 def is_package_installed(package_name):
-    try:
+    try: 
         importlib.import_module(package_name)
         return True
-    except ImportError:
+    except ImportError as e:
+        print(str(e))
         return False
 
-# Function to install a Python package using pip
+# Function to install a Python package using pip        
 def install_package(package_name):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package_name])
+    subprocess.run(["pip3", "install", package_name])
 
 # Function to check if wkhtmltopdf is installed
 def is_wkhtmltopdf_installed():
-    result = subprocess.run(['which', 'wkhtmltopdf'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    return result.returncode == 0
+    result= subprocess.run(["which", "wkhtmltopdf"])
+    return result==0
 
 # Function to install wkhtmltopdf
 def install_wkhtmltopdf():
-    subprocess.check_call(['sudo', 'apt-get', 'update'])
-    subprocess.check_call(['sudo', 'apt-get', 'install', '-y', 'wkhtmltopdf'])
+    subprocess.run(["apt-get" , "install", "-y", "wkhtmltopdf"])
 
 # Required Python packages
-required_packages = ["pdfkit", "requests"]
+requested_packages=["requests", "pdfkit","os","json"]
 
 # Check and install Python packages
-for package in required_packages:
-    if is_package_installed(package):
-        print(f"Python package {package} is already installed.")
+for package in requested_packages:
+    present = is_package_installed(package)
+    if present:
+        print(f"Python package \"{package}\" is alerady installled")
     else:
-        print(f"Installing Python package {package}...")
         install_package(package)
-
-# Check if 'os' and 'json' are available (they are part of Python's standard library)
-print("Checking if 'os' and 'json' are available...")
-try:
-    import os
-    import json
-    print("'os' and 'json' packages are already available (part of Python standard library).")
-except ImportError:
-    print("Error: 'os' and/or 'json' are missing, but they should be part of the Python standard library.")
-    sys.exit(1)
+        print(f"Installing Python package \"{package}\" ...")
 
 # Check and install wkhtmltopdf
 if is_wkhtmltopdf_installed():
@@ -53,3 +43,5 @@ else:
     install_wkhtmltopdf()
 
 print("All necessary libraries and tools are installed.")
+
+
