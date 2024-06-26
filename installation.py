@@ -3,45 +3,55 @@ import importlib
 
 # Function to check if a Python package is installed
 def is_package_installed(package_name):
-    try: 
+    try:
         importlib.import_module(package_name)
         return True
-    except ImportError as e:
-        print(str(e))
+    except ImportError:
         return False
 
-# Function to install a Python package using pip        
+# Function to install a Python package using pip
 def install_package(package_name):
-    subprocess.run(["pip3", "install", package_name])
+    result = subprocess.run(["pip3", "install", package_name])
+    if result.returncode == 0:
+        return True
+    else:
+        return False
 
 # Function to check if wkhtmltopdf is installed
 def is_wkhtmltopdf_installed():
-    result= subprocess.run(["which", "wkhtmltopdf"])
-    return result==0
+    result = subprocess.run(["which", "wkhtmltopdf"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    return result.returncode == 0
 
 # Function to install wkhtmltopdf
 def install_wkhtmltopdf():
-    subprocess.run(["apt-get" , "install", "-y", "wkhtmltopdf"])
+    result = subprocess.run(["apt-get", "install", "-y", "wkhtmltopdf"])
+    if result.returncode == 0:
+        return True
+    else:
+        return False
 
 # Required Python packages
-requested_packages=["requests", "pdfkit","os","json"]
+requested_packages = ["requests", "pdfkit", "os", "json"]
 
 # Check and install Python packages
 for package in requested_packages:
-    present = is_package_installed(package)
-    if present:
-        print(f"Python package \"{package}\" is alerady installled")
+    if is_package_installed(package):
+        print(f"Python package \"{package}\" is already installed.")
     else:
-        install_package(package)
-        print(f"Installing Python package \"{package}\" ...")
+        print(f"Installing Python package \"{package}\"...")
+        if install_package(package):
+            print(f"Successfully installed Python package \"{package}\".")
+        else:
+            print(f"Failed to install Python package \"{package}\".")
 
 # Check and install wkhtmltopdf
 if is_wkhtmltopdf_installed():
     print("wkhtmltopdf is already installed.")
 else:
     print("Installing wkhtmltopdf...")
-    install_wkhtmltopdf()
+    if install_wkhtmltopdf():
+        print("Successfully installed wkhtmltopdf.")
+    else:
+        print("Failed to install wkhtmltopdf.")
 
 print("All necessary libraries and tools are installed.")
-
-
