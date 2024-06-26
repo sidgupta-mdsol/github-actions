@@ -21,7 +21,7 @@ def is_wkhtmltopdf_installed():
 
 # Function to install wkhtmltopdf
 def install_wkhtmltopdf():
-    result_install = subprocess.run(['sudo', 'apt-get', 'install', '-y', 'wkhtmltopdf'])
+    result_install = subprocess.run(['apt-get', 'install', '-y', 'wkhtmltopdf'])
     return result_install.returncode == 0
 
 # Required Python packages
