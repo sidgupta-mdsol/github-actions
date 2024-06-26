@@ -43,6 +43,7 @@ for package in requested_packages:
         else:
             print(f"Failed to install Python package \"{package}\".")
             install_status[package] = "Failed to install"
+            exit(1)
 
 # Check and install wkhtmltopdf
 if is_wkhtmltopdf_installed():
@@ -56,6 +57,7 @@ else:
     else:
         print("Failed to install wkhtmltopdf.")
         install_status["wkhtmltopdf"] = "Failed to install"
+        exit(1)
 
 # Final summary
 print("\nInstallation summary:")
